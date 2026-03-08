@@ -4,160 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chúc mừng 8/3</title>
-  <style>
-    :root {
-      --primary: #ff4f87;
-      --secondary: #ffd3e2;
-      --text: #ffffff;
-      --overlay: rgba(49, 10, 33, 0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text);
-      background:
-        linear-gradient(var(--overlay), var(--overlay)),
-        url("background.jpg") center/cover no-repeat fixed;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .glow {
-      position: absolute;
-      width: min(90vw, 680px);
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 79, 135, 0.35), transparent 60%);
-      filter: blur(8px);
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    .card {
-      position: relative;
-      text-align: center;
-      width: min(92vw, 760px);
-      padding: clamp(1.5rem, 4vw, 3.2rem);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 24px;
-      backdrop-filter: blur(7px);
-      background: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      animation: floatCard 5s ease-in-out infinite;
-      z-index: 2;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 7vw, 4.2rem);
-      letter-spacing: 1px;
-      text-shadow: 0 4px 20px rgba(255, 79, 135, 0.9);
-      animation: shimmer 2.8s ease-in-out infinite;
-    }
-
-    p {
-      margin-top: 1rem;
-      font-size: clamp(1rem, 2.5vw, 1.4rem);
-      line-height: 1.7;
-      color: #ffeef5;
-    }
-
-    .heart {
-      margin-top: 1.5rem;
-      font-size: clamp(2rem, 4vw, 3rem);
-      display: inline-block;
-      animation: beat 1.2s ease-in-out infinite;
-    }
-
-    .petals {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .petal {
-      --x: 50vw;
-      --size: 12px;
-      --duration: 12s;
-      --delay: 0s;
-      position: absolute;
-      top: -10vh;
-      left: var(--x);
-      width: var(--size);
-      height: calc(var(--size) * 1.5);
-      background: linear-gradient(145deg, #ffd4e3, #ff6ca0);
-      border-radius: 50% 50% 50% 0;
-      opacity: 0.8;
-      transform: rotate(15deg);
-      animation: fall var(--duration) linear var(--delay) infinite;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(0.95); opacity: 0.6; }
-      50% { transform: scale(1.08); opacity: 1; }
-    }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes shimmer {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      25% { transform: scale(1.2); }
-      45% { transform: scale(0.95); }
-      70% { transform: scale(1.15); }
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translate3d(0, -10vh, 0) rotate(0deg);
-        opacity: 0;
-      }
-      10% { opacity: 0.9; }
-      100% {
-        transform: translate3d(40px, 115vh, 0) rotate(360deg);
-        opacity: 0;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="8-3.css" />
 </head>
 <body>
-  <div class="glow" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+  <div class="rain-layer" id="rainLayer" aria-hidden="true"></div>
 
-  <div class="petals" aria-hidden="true">
-    <span class="petal" style="--x: 8vw; --size: 12px; --duration: 11s; --delay: -1s;"></span>
-    <span class="petal" style="--x: 18vw; --size: 16px; --duration: 13s; --delay: -4s;"></span>
-    <span class="petal" style="--x: 28vw; --size: 11px; --duration: 10s; --delay: -2s;"></span>
-    <span class="petal" style="--x: 38vw; --size: 14px; --duration: 14s; --delay: -6s;"></span>
-    <span class="petal" style="--x: 50vw; --size: 10px; --duration: 9s; --delay: -3s;"></span>
-    <span class="petal" style="--x: 62vw; --size: 17px; --duration: 15s; --delay: -7s;"></span>
-    <span class="petal" style="--x: 74vw; --size: 13px; --duration: 12s; --delay: -5s;"></span>
-    <span class="petal" style="--x: 84vw; --size: 15px; --duration: 16s; --delay: -8s;"></span>
-    <span class="petal" style="--x: 92vw; --size: 11px; --duration: 10.5s; --delay: -2.5s;"></span>
+  <main class="app">
+    <header class="hero card">
+      <h1 class="fade-float">💐 Chúc mừng ngày Quốc tế Phụ nữ 8-3 💐</h1>
+      <p class="fade-float delay-1">Chúc bạn luôn xinh đẹp, tự tin, hạnh phúc và tỏa sáng mỗi ngày.</p>
+    </header>
+
+    <section class="gift-grid">
+      <button class="gift-box card" id="gift1Btn">🎁 Hộp quà 1<br /><span>Lời chúc dài</span></button>
+      <button class="gift-box card" id="gift2Btn">💝 Hộp quà 2<br /><span>Mưa tim vô hạn</span></button>
+      <button class="gift-box card" id="gift3Btn">🖼️ Hộp quà 3<br /><span>Kho ảnh trái tim</span></button>
+      <button class="gift-box card" id="gift4Btn">✨ Hộp quà 4<br /><span>Lời chúc theo tên</span></button>
+    </section>
+
+    <section class="card panel hidden" id="gift1Panel">
+      <h2>Quà 1: Lời chúc đặc biệt</h2>
+      <p id="gift1Text" class="type-target"></p>
+    </section>
+
+    <section class="card panel hidden" id="gift2Panel">
+      <h2>Quà 2: Cơn mưa trái tim</h2>
+      <p id="gift2Status">Đang tạo mưa tim và lời chúc rơi từ trên xuống vô hạn... 💗</p>
+    </section>
+
+    <section class="card panel hidden" id="gift3Panel">
+      <h2>Quà 3: Kho ảnh 8/3</h2>
+      <p>Bộ ảnh được xếp theo hình trái tim, có hiệu ứng xuất hiện và trôi nhẹ.</p>
+      <div class="heart-gallery fade-float" id="heartGallery">
+        <div class="photo p1">8/3</div>
+        <div class="photo p2">Yêu thương</div>
+        <div class="photo p3">Nụ cười</div>
+        <div class="photo p4">Hạnh phúc</div>
+        <div class="photo p5">Tỏa sáng</div>
+        <div class="photo p6">Dịu dàng</div>
+        <div class="photo p7">Tự tin</div>
+      </div>
+    </section>
+
+    <section class="card panel hidden" id="gift4Panel">
+      <h2>Quà 4: Cá nhân hóa lời chúc</h2>
+      <button class="action-btn" id="openDialogBtn">Nhập tên để nhận lời chúc</button>
+      <div class="wish-output hidden" id="wishOutput">
+        <p id="personalWish" class="type-target"></p>
+        <img
+          id="wishGif"
+          class="hidden"
+          src="https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"
+          alt="GIF chúc mừng"
+        />
+      </div>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="nameModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <h3 id="modalTitle">Nhập tên của bạn</h3>
+      <input type="text" id="nameInput" placeholder="Ví dụ: Lan" maxlength="40" />
+      <div class="modal-actions">
+        <button class="action-btn" id="submitNameBtn">Nhận lời chúc</button>
+        <button class="action-btn secondary" id="closeModalBtn">Đóng</button>
+      </div>
+    </div>
   </div>
 
-  <main class="card">
-    <h1>Chúc mừng ngày Quốc tế Phụ nữ 8/3</h1>
-    <p>
-      Chúc một nửa thế giới luôn rạng rỡ, hạnh phúc và nhận thật nhiều yêu thương.
-      Mong rằng mỗi ngày đều là một ngày thật đẹp với những nụ cười và thành công!
-    </p>
-    <span class="heart" aria-label="trái tim">💖</span>
-  </main>
+  <script src="8-3.js"></script>
 </body>
 </html>
