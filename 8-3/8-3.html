@@ -3,101 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lễ hội 8/3 - Mini game nhận quà</title>
+  <title>Chúc mừng 8/3 - Hộp quà yêu thương</title>
   <link rel="stylesheet" href="8-3.css" />
 </head>
 <body>
   <div class="overlay" aria-hidden="true"></div>
-  <div class="petals" id="petals" aria-hidden="true"></div>
 
-  <header class="hero card">
-    <h1>🌸 Lễ hội 8/3 rực rỡ 🌸</h1>
-    <p>
-      Hoàn thành mini game để mở khóa quà là những lời chúc đáng yêu.
-      Dùng nút chuyển trang để khám phá từng khu vực nhé!
-    </p>
-  </header>
+  <main class="container">
+    <header class="hero card fade-float">
+      <h1 id="heroTitle">🌸 Chúc mừng ngày Quốc tế Phụ nữ 8/3 🌸</h1>
+      <p id="heroSubtitle" class="typed-text"></p>
+    </header>
 
-  <nav class="page-nav card" aria-label="Điều hướng trang nội dung">
-    <button class="btn btn-secondary" id="prevPageBtn">⬅ Trang trước</button>
-    <div class="dots" id="pageDots" aria-label="Chọn trang"></div>
-    <button class="btn btn-primary" id="nextPageBtn">Trang sau ➡</button>
-  </nav>
-
-  <main class="pages" id="pages">
-    <section class="page active" data-page-title="Mini game">
-      <div class="grid">
-        <section class="card game" id="quizGame">
-          <h2>Mini game 1: Câu hỏi nhanh</h2>
-          <p class="question">Ngày Quốc tế Phụ nữ diễn ra vào ngày nào?</p>
-          <div class="choices">
-            <button class="btn answer" data-correct="false">20/10</button>
-            <button class="btn answer" data-correct="true">08/03</button>
-            <button class="btn answer" data-correct="false">01/06</button>
-          </div>
-          <p class="status" id="quizStatus">Hãy chọn đáp án chính xác để nhận quà.</p>
-        </section>
-
-        <section class="card game" id="numberGame">
-          <h2>Mini game 2: Đoán con số may mắn</h2>
-          <p>Đoán một số từ 1 đến 8. Bạn có 3 lượt!</p>
-          <div class="guess-box">
-            <input type="number" id="guessInput" min="1" max="8" placeholder="Nhập số 1-8" />
-            <button class="btn btn-primary" id="guessBtn">Đoán ngay</button>
-          </div>
-          <p class="status" id="guessStatus">May mắn đang chờ bạn ✨</p>
-        </section>
-
-        <section class="card game" id="heartGame">
-          <h2>Mini game 3: Bắt trái tim</h2>
-          <p>Nhấn vào trái tim 5 lần để mở khóa lời chúc.</p>
-          <button class="heart-btn" id="heartBtn" aria-label="Bắt trái tim">💖</button>
-          <p class="status" id="heartStatus">Số lần bắt được: 0/5</p>
-        </section>
-
-        <section class="card gifts" id="giftSection">
-          <h2>💌 Kho quà lời chúc</h2>
-          <div class="hero-actions">
-            <button class="btn btn-primary" id="openGiftBtn">🎁 Mở quà ngẫu nhiên</button>
-            <button class="btn btn-secondary" id="resetBtn">🔄 Chơi lại</button>
-          </div>
-          <ul id="giftList">
-            <li>Hoàn thành mini game để mở khóa lời chúc.</li>
-          </ul>
-        </section>
-      </div>
+    <section class="gift-grid" aria-label="Bốn hộp quà 8/3">
+      <button class="gift-box box-1" id="gift1">🎁 Hộp quà 1<br /><span>Lời chúc dài</span></button>
+      <button class="gift-box box-2" id="gift2">💝 Hộp quà 2<br /><span>Mưa tim vô hạn</span></button>
+      <button class="gift-box box-3" id="gift3">🖼️ Hộp quà 3<br /><span>Kho ảnh trái tim</span></button>
+      <button class="gift-box box-4" id="gift4">✨ Hộp quà 4<br /><span>Cá nhân hoá tên</span></button>
     </section>
 
-    <section class="page" data-page-title="Tranh trượt 8/3">
-      <section class="card slider-card">
-        <h2>🖼️ Tranh trượt chúc mừng 8/3</h2>
-        <p>Kéo qua lại bằng nút hoặc chờ tự động trượt.</p>
-
-        <div class="slider" id="slider">
-          <article class="slide active">
-            <h3>Hoa nở tháng 3</h3>
-            <p>Chúc bạn luôn xinh đẹp, dịu dàng và rạng rỡ như những đóa hoa xuân.</p>
-          </article>
-          <article class="slide">
-            <h3>Ánh nắng yêu thương</h3>
-            <p>Mong bạn luôn được trân trọng, yêu thương và gặp nhiều may mắn trong cuộc sống.</p>
-          </article>
-          <article class="slide">
-            <h3>Hành trình tỏa sáng</h3>
-            <p>Chúc bạn vững vàng, tự tin và luôn tỏa sáng trên hành trình của riêng mình.</p>
-          </article>
-        </div>
-
-        <div class="slider-controls">
-          <button class="btn btn-secondary" id="prevSlideBtn">⟨ Tranh trước</button>
-          <div class="dots" id="slideDots"></div>
-          <button class="btn btn-primary" id="nextSlideBtn">Tranh sau ⟩</button>
-        </div>
-      </section>
+    <section class="card output" id="output">
+      <h2>Khu vực bất ngờ</h2>
+      <p class="hint">Hãy bấm một hộp quà để mở hiệu ứng nhé 💐</p>
+      <div id="dynamicContent"></div>
+      <div id="rainLayer" aria-hidden="true"></div>
     </section>
   </main>
 
-  <footer class="footer">Chúc một nửa thế giới luôn xinh đẹp, tự tin và hạnh phúc mỗi ngày 💐</footer>
+  <dialog id="nameDialog" class="name-dialog">
+    <form method="dialog" id="nameForm" class="dialog-content">
+      <h3>Nhập tên người bạn muốn gửi lời chúc</h3>
+      <input id="nameInput" type="text" placeholder="Ví dụ: Linh" maxlength="30" required />
+      <div class="dialog-actions">
+        <button value="cancel" class="btn secondary">Hủy</button>
+        <button value="ok" class="btn primary">Gửi lời chúc</button>
+      </div>
+    </form>
+  </dialog>
 
   <script src="8-3.js"></script>
 </body>
