@@ -1,0 +1,259 @@
+:root {
+  --pink: #ff4f87;
+  --pink-soft: #ffd8e8;
+  --purple: #7030a0;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--white);
+  background: url("background8-3.jpg") center/cover fixed no-repeat;
+  padding: 1.1rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(130deg, rgba(43, 5, 36, 0.64), rgba(98, 32, 79, 0.42));
+  z-index: 0;
+}
+
+.app {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.card {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+}
+
+.hero {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.9rem, 5.8vw, 3.2rem);
+  text-shadow: 0 0 20px rgba(255, 124, 175, 0.75);
+}
+
+.hero p {
+  margin-top: 0.6rem;
+  opacity: 0.95;
+}
+
+.gift-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.gift-box {
+  color: var(--white);
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(140deg, rgba(255, 92, 146, 0.85), rgba(114, 49, 163, 0.8));
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.gift-box span {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.gift-box:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+.panel {
+  margin-top: 0.9rem;
+  padding: 1rem;
+}
+
+h2,
+h3 {
+  margin: 0 0 0.55rem;
+}
+
+.type-target {
+  min-height: 5.5em;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+.rain-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rain-item {
+  position: absolute;
+  top: -70px;
+  color: #ffe4f1;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  animation: rainDown linear forwards;
+}
+
+.rain-item .heart {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.rain-item .short-wish {
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+.heart-gallery {
+  position: relative;
+  width: min(92vw, 420px);
+  height: 320px;
+  margin: 0.6rem auto 0;
+}
+
+.photo {
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(rgba(255, 78, 141, 0.2), rgba(124, 61, 167, 0.4)), url("background8-3.jpg");
+  background-size: cover;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.p1 { left: 160px; top: 22px; }
+.p2 { left: 90px; top: 70px; }
+.p3 { left: 230px; top: 70px; }
+.p4 { left: 50px; top: 142px; }
+.p5 { left: 270px; top: 142px; }
+.p6 { left: 110px; top: 210px; }
+.p7 { left: 210px; top: 210px; }
+
+.action-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--pink), #ff2b70);
+  font-weight: 600;
+}
+
+.action-btn.secondary {
+  background: linear-gradient(135deg, #a35dde, var(--purple));
+}
+
+.wish-output {
+  margin-top: 0.8rem;
+}
+
+#wishGif {
+  margin-top: 0.4rem;
+  max-width: 230px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(24, 4, 20, 0.58);
+  z-index: 4;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: min(92vw, 380px);
+  background: #fff2f8;
+  color: #4a183a;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.modal-card input {
+  width: 100%;
+  border: 1px solid #e5a6c5;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.modal-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fade-float {
+  animation: fadeIn 1.2s ease both, floaty 3.8s ease-in-out infinite;
+}
+
+.delay-1 {
+  animation-delay: 0.35s, 0.35s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes rainDown {
+  to {
+    transform: translateY(115vh);
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 520px) {
+  .heart-gallery {
+    transform: scale(0.88);
+    transform-origin: top center;
+    height: 280px;
+  }
+}
