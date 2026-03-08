@@ -1,10 +1,8 @@
 :root {
   --pink-1: #ff4f87;
   --pink-2: #ff96bb;
-  --pink-3: #ffd9e8;
   --purple: #6d2e8c;
   --white: #ffffff;
-  --dark: #3a1234;
 }
 
 * {
@@ -43,7 +41,6 @@ body {
   height: 18px;
   border-radius: 50% 50% 50% 0;
   background: linear-gradient(145deg, #ffe0ec, #ff5f95);
-  opacity: 0.8;
   animation: fall linear infinite;
 }
 
@@ -57,44 +54,56 @@ body {
   z-index: 2;
 }
 
-.hero {
+.hero,
+.page-nav,
+.pages,
+.footer {
   max-width: 980px;
-  margin: 0 auto 1rem;
-  padding: 1.4rem;
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 1.2rem;
   text-align: center;
+  margin-bottom: 0.8rem;
 }
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(1.8rem, 5vw, 3.1rem);
-  text-shadow: 0 4px 16px rgba(255, 79, 135, 0.9);
+  font-size: clamp(1.8rem, 5vw, 3rem);
 }
 
-.hero p {
-  margin-top: 0.8rem;
-  line-height: 1.6;
-}
-
-.hero-actions {
+.page-nav {
+  padding: 0.7rem;
+  margin-bottom: 0.8rem;
   display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
-.grid {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 0.9rem;
+.pages {
   position: relative;
   z-index: 2;
 }
 
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.9rem;
+}
+
 .game,
-.gifts {
+.gifts,
+.slider-card {
   padding: 1rem;
 }
 
@@ -111,7 +120,7 @@ h2 {
   color: var(--white);
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .btn:hover {
@@ -119,33 +128,26 @@ h2 {
   filter: brightness(1.05);
 }
 
-.btn:active {
-  transform: translateY(0);
-}
-
 .btn-primary {
   background: linear-gradient(135deg, var(--pink-1), #ff2f74);
-  box-shadow: 0 8px 16px rgba(255, 79, 135, 0.35);
 }
 
 .btn-secondary {
   background: linear-gradient(135deg, #9e4ad7, var(--purple));
-  box-shadow: 0 8px 16px rgba(109, 46, 140, 0.35);
 }
 
-.choices {
+.hero-actions,
+.choices,
+.guess-box,
+.slider-controls {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .answer {
   background: linear-gradient(135deg, #f56ea5, var(--pink-1));
-}
-
-.guess-box {
-  display: flex;
-  gap: 0.5rem;
 }
 
 input {
@@ -155,10 +157,6 @@ input {
   background: rgba(255, 255, 255, 0.2);
   color: var(--white);
   padding: 0.55rem 0.7rem;
-}
-
-input::placeholder {
-  color: #ffeaf3;
 }
 
 .heart-btn {
@@ -172,50 +170,75 @@ input::placeholder {
   background: radial-gradient(circle at 30% 30%, #ffd3e3, #ff367f);
   font-size: 2rem;
   cursor: pointer;
-  box-shadow: 0 12px 20px rgba(255, 54, 127, 0.45);
   animation: heartbeat 1.2s infinite;
 }
 
 .status {
   min-height: 2.4em;
-  font-size: 0.95rem;
-  color: #ffeaf4;
 }
 
 #giftList {
-  margin: 0;
+  margin: 0.7rem 0 0;
   padding-left: 1.2rem;
-  line-height: 1.6;
 }
 
-.unlocked {
-  color: #fff5bd;
+.slider {
+  position: relative;
+  min-height: 210px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  min-height: 210px;
+  padding: 1.2rem;
+  border-radius: 14px;
+  background: linear-gradient(125deg, rgba(255, 88, 142, 0.8), rgba(113, 52, 155, 0.78));
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide h3 {
+  margin-top: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 0.45rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .footer {
   position: relative;
   z-index: 2;
   text-align: center;
-  margin: 1rem auto 0;
-  max-width: 980px;
-  opacity: 0.95;
+  margin-top: 1rem;
 }
 
 @keyframes heartbeat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.12);
-  }
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(1.12); }
 }
 
 @keyframes fall {
-  from {
-    transform: translateY(-10vh) rotate(0deg);
-  }
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
+  from { transform: translateY(-10vh) rotate(0deg); }
+  to { transform: translateY(110vh) rotate(360deg); }
 }

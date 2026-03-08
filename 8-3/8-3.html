@@ -13,49 +13,87 @@
   <header class="hero card">
     <h1>🌸 Lễ hội 8/3 rực rỡ 🌸</h1>
     <p>
-      Chào mừng bạn đến với khu vườn mini game! Hoàn thành các thử thách nhỏ để mở khóa
-      những món quà đặc biệt: các lời chúc ngọt ngào dành cho ngày Quốc tế Phụ nữ.
+      Hoàn thành mini game để mở khóa quà là những lời chúc đáng yêu.
+      Dùng nút chuyển trang để khám phá từng khu vực nhé!
     </p>
-    <div class="hero-actions">
-      <button class="btn btn-primary" id="openGiftBtn">🎁 Mở quà ngẫu nhiên</button>
-      <button class="btn btn-secondary" id="resetBtn">🔄 Chơi lại từ đầu</button>
-    </div>
   </header>
 
-  <main class="grid">
-    <section class="card game" id="quizGame">
-      <h2>Mini game 1: Câu hỏi nhanh</h2>
-      <p class="question">Ngày Quốc tế Phụ nữ diễn ra vào ngày nào?</p>
-      <div class="choices">
-        <button class="btn answer" data-correct="false">20/10</button>
-        <button class="btn answer" data-correct="true">08/03</button>
-        <button class="btn answer" data-correct="false">01/06</button>
+  <nav class="page-nav card" aria-label="Điều hướng trang nội dung">
+    <button class="btn btn-secondary" id="prevPageBtn">⬅ Trang trước</button>
+    <div class="dots" id="pageDots" aria-label="Chọn trang"></div>
+    <button class="btn btn-primary" id="nextPageBtn">Trang sau ➡</button>
+  </nav>
+
+  <main class="pages" id="pages">
+    <section class="page active" data-page-title="Mini game">
+      <div class="grid">
+        <section class="card game" id="quizGame">
+          <h2>Mini game 1: Câu hỏi nhanh</h2>
+          <p class="question">Ngày Quốc tế Phụ nữ diễn ra vào ngày nào?</p>
+          <div class="choices">
+            <button class="btn answer" data-correct="false">20/10</button>
+            <button class="btn answer" data-correct="true">08/03</button>
+            <button class="btn answer" data-correct="false">01/06</button>
+          </div>
+          <p class="status" id="quizStatus">Hãy chọn đáp án chính xác để nhận quà.</p>
+        </section>
+
+        <section class="card game" id="numberGame">
+          <h2>Mini game 2: Đoán con số may mắn</h2>
+          <p>Đoán một số từ 1 đến 8. Bạn có 3 lượt!</p>
+          <div class="guess-box">
+            <input type="number" id="guessInput" min="1" max="8" placeholder="Nhập số 1-8" />
+            <button class="btn btn-primary" id="guessBtn">Đoán ngay</button>
+          </div>
+          <p class="status" id="guessStatus">May mắn đang chờ bạn ✨</p>
+        </section>
+
+        <section class="card game" id="heartGame">
+          <h2>Mini game 3: Bắt trái tim</h2>
+          <p>Nhấn vào trái tim 5 lần để mở khóa lời chúc.</p>
+          <button class="heart-btn" id="heartBtn" aria-label="Bắt trái tim">💖</button>
+          <p class="status" id="heartStatus">Số lần bắt được: 0/5</p>
+        </section>
+
+        <section class="card gifts" id="giftSection">
+          <h2>💌 Kho quà lời chúc</h2>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="openGiftBtn">🎁 Mở quà ngẫu nhiên</button>
+            <button class="btn btn-secondary" id="resetBtn">🔄 Chơi lại</button>
+          </div>
+          <ul id="giftList">
+            <li>Hoàn thành mini game để mở khóa lời chúc.</li>
+          </ul>
+        </section>
       </div>
-      <p class="status" id="quizStatus">Hãy chọn đáp án chính xác để nhận quà.</p>
     </section>
 
-    <section class="card game" id="numberGame">
-      <h2>Mini game 2: Đoán con số may mắn</h2>
-      <p>Đoán một số từ 1 đến 8. Bạn có 3 lượt!</p>
-      <div class="guess-box">
-        <input type="number" id="guessInput" min="1" max="8" placeholder="Nhập số 1-8" />
-        <button class="btn btn-primary" id="guessBtn">Đoán ngay</button>
-      </div>
-      <p class="status" id="guessStatus">May mắn đang chờ bạn ✨</p>
-    </section>
+    <section class="page" data-page-title="Tranh trượt 8/3">
+      <section class="card slider-card">
+        <h2>🖼️ Tranh trượt chúc mừng 8/3</h2>
+        <p>Kéo qua lại bằng nút hoặc chờ tự động trượt.</p>
 
-    <section class="card game" id="heartGame">
-      <h2>Mini game 3: Bắt trái tim</h2>
-      <p>Nhấn vào trái tim 5 lần để mở khóa lời chúc.</p>
-      <button class="heart-btn" id="heartBtn" aria-label="Bắt trái tim">💖</button>
-      <p class="status" id="heartStatus">Số lần bắt được: 0/5</p>
-    </section>
+        <div class="slider" id="slider">
+          <article class="slide active">
+            <h3>Hoa nở tháng 3</h3>
+            <p>Chúc bạn luôn xinh đẹp, dịu dàng và rạng rỡ như những đóa hoa xuân.</p>
+          </article>
+          <article class="slide">
+            <h3>Ánh nắng yêu thương</h3>
+            <p>Mong bạn luôn được trân trọng, yêu thương và gặp nhiều may mắn trong cuộc sống.</p>
+          </article>
+          <article class="slide">
+            <h3>Hành trình tỏa sáng</h3>
+            <p>Chúc bạn vững vàng, tự tin và luôn tỏa sáng trên hành trình của riêng mình.</p>
+          </article>
+        </div>
 
-    <section class="card gifts" id="giftSection">
-      <h2>💌 Kho quà lời chúc</h2>
-      <ul id="giftList">
-        <li>Hoàn thành mini game để mở khóa lời chúc.</li>
-      </ul>
+        <div class="slider-controls">
+          <button class="btn btn-secondary" id="prevSlideBtn">⟨ Tranh trước</button>
+          <div class="dots" id="slideDots"></div>
+          <button class="btn btn-primary" id="nextSlideBtn">Tranh sau ⟩</button>
+        </div>
+      </section>
     </section>
   </main>
 
